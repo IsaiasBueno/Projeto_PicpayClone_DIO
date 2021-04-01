@@ -13,32 +13,31 @@ import br.com.isaiasbueno.dio.picpayclone.enums.BandeiraCartao;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsandHashCode(callsuper = false)
+@EqualsAndHashCode(callSuper = false)
 @Entity
-@Table(name = "Usuarios")
+@Table(name = "CARTAO_CREDITO")
+public class CartaoCredito extends EntidadeBase {
 
-
-public class CartaoCredito extends EntidadeBase{
-    @column(name = "CC_NUMERO" ,nullable = false);
+    @Column(name = "CC_NUMERO", nullable = false)
     private String numero;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "CC_BANDEIRA", nullable = false);
+    @Column(name = "CC_BANDEIRA", nullable = false)
     private BandeiraCartao bandeira;
 
     @Column(name = "CC_TOKEN")
     private String numeroToken;
 
-    @ManyToOne(cascade = {cascadeType.MERGE})
-    @JoinColumn(name = "CC_Usuario_ID", nullable = false);
+    @ManyToOne(cascade = { CascadeType.MERGE })
+    @JoinColumn(name = "CC_USUARIO_ID", nullable = false)
     private Usuario usuario;
 
 }
